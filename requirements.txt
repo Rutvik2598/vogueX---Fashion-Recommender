@@ -55,7 +55,7 @@ SQLAlchemy==1.4.41
 termcolor==1.1.0
 tomli==2.0.1
 tensorflow==2.11.0
-tensorflow-estimator==2.1
+tensorflow-estimator==2.11.0
 torch==2.2.2
 torchvision==0.17.2
 uritemplate==4.1.1
