@@ -88,7 +88,6 @@ def forgot_password():
         confirm_password = form.confirm_password.data
 
         user = User.query.filter_by(username=username).first()
-        
         if user:
             
             if new_password == confirm_password:
