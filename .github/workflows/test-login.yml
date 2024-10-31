@@ -20,10 +20,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Set up SQLite database
-        run: |
-          python -c "from app import db; db.create_all()"
-          echo "SQLite database set up successfully."
+      # - name: Set up SQLite database
+      #   run: |
+      #     python -c "from app import db; db.create_all()"
+      #     echo "SQLite database set up successfully."
 
       - name: Run tests
         env:
@@ -36,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-report
-          path: ./test-report.xml  # Updated path for the new test report
+          path: tests/test-report.xml  # Updated path for the new test report
