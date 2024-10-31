@@ -55,7 +55,6 @@ six==1.16.0
 SQLAlchemy==1.4.41
 termcolor==1.1.0
 tomli==2.0.1
-tensorboard==2.11.0
 tensorflow==2.11.0
 tensorflow-estimator==2.1
 torch==2.2.2
