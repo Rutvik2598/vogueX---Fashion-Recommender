@@ -1,78 +1,59 @@
-from flask import Flask, g
-import json
-from website.auth import auth
-from website.auth import db
-from flask_sqlalchemy import SQLAlchemy
-from os import path
-from flask_login import LoginManager
-import sys
+import pytest
+from flask import Flask
+from werkzeug.security import generate_password_hash
+from your_flask_app import create_app, db
+from your_flask_app.models import User  
 
-sys.path.append("..")
-
+@pytest.fixture
+def app():
+    app = create_app('testing')
+    with app.app_context():
+        db.create_all()
+        # Add a test user
+        test_user = User(username='test_user', email='test@gmail.com', password=generate_password_hash('password123'))
+        db.session.add(test_user)
+        db.session.commit()
+        yield app
+        db.drop_all()
 
 def test_login_get(app):
     client = app.test_client()
-    url = "/login"
-
-    response = client.get(url)
-    assert response.status_code == 200  # Check if the login page loads successfully
-
+    response = client.get("/login")
+    assert response.status_code == 200
 
 def test_login_post(app):
     client = app.test_client()
-    mimetype = "application/x-www-form-urlencoded"
-    headers = {"Content-Type": mimetype, "Accept": mimetype}
-
-    # Adjusted to use username instead of email, as per app expectations
     data = {
-        "username": "non_existent_user",  # This user should not be in the database
+        "username": "non_existent_user",
         "password": "password123"
     }
-    url = "/login"
-
-    response = client.post(url, data=data, headers=headers)
-    assert response.status_code == 200  # Expect the login page to reload with error message
-
+    response = client.post("/login", data=data)
+    assert response.status_code == 200
 
 def test_signup_get(app):
     client = app.test_client()
-    url = "/signup"  # Adjusted to match the actual signup route
-    response = client.get(url)
-    assert response.status_code == 200  # Check if the signup page loads successfully
-
-
+    response = client.get("/signup")
+    assert response.status_code == 200
 
 def test_signup_post(app):
     client = app.test_client()
-    url = "/signup"
-    mimetype = "application/x-www-form-urlencoded"
-    headers = {"Content-Type": mimetype, "Accept": mimetype}
-
     data = {
-        "username": "test_user",
-        "email": "test@gmail.com",
+        "username": "test_user_new",
+        "email": "test_new@gmail.com",
         "password": "password123",
         "confirm": "password123",
     }
-
-    response = client.post(url, data=data, headers=headers)
-    assert response.status_code == 302  # Expect a redirect on successful signup
-    assert response.headers["Location"] == "/home"  # Check if redirected to /home
-
+    response = client.post("/signup", data=data)
+    assert response.status_code == 302
+    assert response.headers["Location"] == "/home"
 
 def test_login_check_positive_case(app):
     client = app.test_client()
-    url = "/login"
-    mimetype = "application/x-www-form-urlencoded"
-    headers = {"Content-Type": mimetype, "Accept": mimetype}
-
-    # Ensure a test user is created beforehand or use a setup fixture
     data = {
-        "username": "test_user",  # Replace with actual username if different
+        "username": "test_user",
         "password": "password123",
-        "remember": "y",  # Assuming 'remember' can be "y" for True; omit if unnecessary
+        "remember": "y",
     }
-
-    response = client.post(url, data=data, headers=headers)
-    assert response.status_code == 302  # Expect redirect on successful login
-    assert response.headers["Location"] == "/home_page"  # Check if redirected to home page
+    response = client.post("/login", data=data)
+    assert response.status_code == 302
+    assert response.headers["Location"] == "/home_page"
