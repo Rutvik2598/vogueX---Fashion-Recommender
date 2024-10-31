@@ -41,17 +41,17 @@ login_manager.login_view = 'login'
 class User(UserMixin, db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True, nullable=False)  
-    email = db.Column(db.String(50), unique=True, nullable=False)     
-    password = db.Column(db.String(80), unique=True, nullable=False)  
+    email = db.Column(db.String(50), unique=True, nullable=False)      
+    password = db.Column(db.String(80), unique=True, nullable=False)   
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def get_id(self):
-        return (self.sno)
+        return self.sno
 
     def __repr__(self) -> str:
         return f"{self.sno} - {self.username} - {self.date_created}"
 
-with app.app_context():
+with app.app_context():  
     db.create_all()
 
 @login_manager.user_loader
