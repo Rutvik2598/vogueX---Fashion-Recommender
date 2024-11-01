@@ -26,8 +26,8 @@ jobs:
       #     echo "SQLite database set up successfully."
 
       - name: Run tests
-        env:
-          FLASK_ENV: testing
+        # env:
+        #   FLASK_ENV: testing
         run: |
           pytest --maxfail=3 --disable-warnings --junitxml=test-report.xml
 
