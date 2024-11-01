@@ -1,11 +1,16 @@
 import pytest
-from app import create_app, db  # Ensure the correct import for your app
+from app import create_app, db , User 
+from flask import url_for
+from werkzeug.security import generate_password_hash
 
 @pytest.fixture
 def app():
     app = create_app('testing')  # Create your app instance
     with app.app_context():
         db.create_all()  # Create the test database
+        test_user = User(username="testuser", email="vedanttp1210@gmail.com", password=generate_password_hash("password123"))
+        db.session.add(test_user)
+        db.session.commit()
         yield app
         db.drop_all()  # Clean up after tests
 
