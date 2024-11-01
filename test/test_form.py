@@ -18,7 +18,7 @@ def test_login_get(client):
     assert response.status_code == 200  # Check if the response is OK
 
 def test_login_post(client):
-    response = client.post('/login', data={'username': 'test', 'password': 'test'})
+    response = client.post('/login', data={'username': 'smi', 'password': 'test'})
     assert response.status_code == 200  # Check for successful login
 
 def test_signup_get(client):
@@ -26,7 +26,7 @@ def test_signup_get(client):
     assert response.status_code == 200  # Check if the signup page loads
 
 def test_signup_post(client):
-    response = client.post('/signup', data={'username': 'test', 'password': 'test'})
+    response = client.post('/signup', data={'username': 'smi', 'email': 'skothar3@ncsu.edu', 'password': 'test', 'confirm':'test'})
     assert response.status_code == 200  # Check for successful signup
 
 def test_login_check_positive_case(client):
