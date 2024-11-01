@@ -30,9 +30,10 @@ def test_signup_get(client):
     response = client.get('/signup')
     assert response.status_code == 200  # Check if the signup page loads
 
-def test_signup_post(client):
-    response = client.post('/signup', data={'username': 'smi', 'email': 'skothar3@ncsu.edu', 'password': 'test', 'confirm':'test'})
-    assert response.status_code == 200  # Check for successful signup
+def test_signup_post_successfull(client):
+    response = client.post('/signup', data={'username': 'randomuser', 'email': 'vedanttp1210@gmail.com', 'password': 'password123', 'confirm':'password123'})
+    assert response.status_code == 302
+    assert url_for('home') in response.loacation # Check for successful signup
 
 def test_login_check_positive_case(client):
     response = client.post('/login', data={'username': 'valid_user', 'password': 'valid_password'})
