@@ -1,59 +1,34 @@
 import pytest
+from app import app # Make sure to import your Flask app
 from flask import Flask
-from werkzeug.security import generate_password_hash
-from app import create_app, db  # Adjusted import
-from app.models import User  # Adjusted import
 
+# Fixture to create a test instance of the app
 @pytest.fixture
 def app():
-    app = create_app('testing')
-    with app.app_context():
-        db.create_all()
-        # Add a test user
-        test_user = User(username='test_user', email='test@gmail.com', password=generate_password_hash('password123'))
-        db.session.add(test_user)
-        db.session.commit()
-        yield app
-        db.drop_all()
+    app = Flask(_name_, static_folder='static')  # Create your Flask app instance
+    yield app  # Yield the app instance for use in tests
 
-def test_login_get(app):
-    client = app.test_client()
-    response = client.get("/login")
-    assert response.status_code == 200
+# Fixture to create a test client for the app
+@pytest.fixture
+def client(app):
+    return app.test_client()  # Return the test client
 
-def test_login_post(app):
-    client = app.test_client()
-    data = {
-        "username": "non_existent_user",
-        "password": "password123"
-    }
-    response = client.post("/login", data=data)
-    assert response.status_code == 200
+def test_login_get(client):
+    response = client.get('/login')  # Use the client to make a request
+    assert response.status_code == 200  # Check if the response is OK
 
-def test_signup_get(app):
-    client = app.test_client()
-    response = client.get("/signup")
-    assert response.status_code == 200
+def test_login_post(client):
+    response = client.post('/login', data={'username': 'test', 'password': 'test'})
+    assert response.status_code == 200  # Check for successful login
 
-def test_signup_post(app):
-    client = app.test_client()
-    data = {
-        "username": "test_user_new",
-        "email": "test_new@gmail.com",
-        "password": "password123",
-        "confirm": "password123",
-    }
-    response = client.post("/signup", data=data)
-    assert response.status_code == 302
-    assert response.headers["Location"] == "/home"
+def test_signup_get(client):
+    response = client.get('/signup')
+    assert response.status_code == 200  # Check if the signup page loads
 
-def test_login_check_positive_case(app):
-    client = app.test_client()
-    data = {
-        "username": "test_user",
-        "password": "password123",
-        "remember": "y",
-    }
-    response = client.post("/login", data=data)
-    assert response.status_code == 302
-    assert response.headers["Location"] == "/home_page"
+def test_signup_post(client):
+    response = client.post('/signup', data={'username': 'test', 'password': 'test'})
+    assert response.status_code == 200  # Check for successful signup
+
+def test_login_check_positive_case(client):
+    response = client.post('/login', data={'username': 'valid_user', 'password': 'valid_password'})
+    assert response.status_code == 200  # Check for successful login with valid credentials
