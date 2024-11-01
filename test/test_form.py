@@ -5,7 +5,7 @@ from flask import Flask
 # Fixture to create a test instance of the app
 @pytest.fixture
 def app():
-    app = Flask(_name_, static_folder='static')  # Create your Flask app instance
+    app = Flask(__name__, static_folder='static')  # Create your Flask app instance
     yield app  # Yield the app instance for use in tests
 
 # Fixture to create a test client for the app
