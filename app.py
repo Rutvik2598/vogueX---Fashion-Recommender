@@ -282,7 +282,8 @@ def create_app(config_name='default'):
     with app.app_context():
         db.create_all()
 
-    # Define your routes here
+    return app
+
     @app.route('/forgot_password', methods=['GET', 'POST'])
     def forgot_password():
         form = ForgotPasswordForm()
