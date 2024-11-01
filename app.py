@@ -64,32 +64,31 @@ class ForgotPasswordForm(FlaskForm):
     ])
 
 @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+class LoginForm(FlaskForm):
+    style ={}
+    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+    remember = BooleanField('Remember Me')
     
-    class LoginForm(FlaskForm):
-        style ={}
-        username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-        password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-        remember = BooleanField('Remember Me')
+class SignupForm(FlaskForm):
+    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
+    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+    confirm = wtforms.PasswordField(validators=[validators.EqualTo('password', 'Password mismatch')])
+    show_password = BooleanField('Show Password')
     
-    class SignupForm(FlaskForm):
-        username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-        email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
-        password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-        confirm = wtforms.PasswordField(validators=[validators.EqualTo('password', 'Password mismatch')])
-        show_password = BooleanField('Show Password')
-    
-    
-    class ForgotPasswordForm(FlaskForm):
-        username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
-        new_password = PasswordField('New Password', validators=[InputRequired(), Length(min=8, max=80)])
-        confirm_password = PasswordField('Confirm New Password', validators=[
-            InputRequired(), Length(min=8, max=80), validators.EqualTo('new_password', message="Passwords must match")
-        ])
-        
-    class VerifyOTPForm(FlaskForm):
-        otp = StringField('Enter OTP', validators=[DataRequired(), Length(min=6, max=6)])
+class ForgotPasswordForm(FlaskForm):
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
+    new_password = PasswordField('New Password', validators=[InputRequired(), Length(min=8, max=80)])
+    confirm_password = PasswordField('Confirm New Password', validators=[
+        InputRequired(), Length(min=8, max=80), validators.EqualTo('new_password', message="Passwords must match")
+    ])
+
+class VerifyOTPForm(FlaskForm):
+    otp = StringField('Enter OTP', validators=[DataRequired(), Length(min=6, max=6)])
     
 def create_app(config_name='default'):
     app = Flask(__name__, static_folder='static')
