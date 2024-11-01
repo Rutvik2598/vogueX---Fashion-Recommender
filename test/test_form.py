@@ -1,17 +1,17 @@
 import pytest
-from app import app # Make sure to import your Flask app
-from flask import Flask
+from app import create_app, db  # Ensure the correct import for your app
 
-# Fixture to create a test instance of the app
 @pytest.fixture
 def app():
-    app = Flask(__name__, static_folder='static')  # Create your Flask app instance
-    yield app  # Yield the app instance for use in tests
+    app = create_app('testing')  # Create your app instance
+    with app.app_context():
+        db.create_all()  # Create the test database
+        yield app
+        db.drop_all()  # Clean up after tests
 
-# Fixture to create a test client for the app
 @pytest.fixture
 def client(app):
-    return app.test_client()  # Return the test client
+    return app.test_client() 
 
 def test_login_get(client):
     response = client.get('/login')  # Use the client to make a request
