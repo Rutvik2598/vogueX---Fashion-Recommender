@@ -49,7 +49,7 @@ class ForgotPasswordForm(FlaskForm):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-def create_app():
+def create_app(config_name='default'):
     app = Flask(__name__, static_folder='static')
     app.secret_key = 'smi'
 
@@ -57,6 +57,10 @@ def create_app():
     app.config['SECRET_KEY'] = 'vogueXProject'
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///vogueX.db"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    # If you have different configurations, you can use the config_name here
+    if config_name == 'testing':
+        app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///:memory:"  # Use an in-memory database for testing
     
     # Initialize extensions
     db.init_app(app)
@@ -66,7 +70,7 @@ def create_app():
 
     with app.app_context():
         db.create_all()
-
+        
     # Register routes
     @app.route('/forgot_password', methods=['GET', 'POST'])
     def forgot_password():
