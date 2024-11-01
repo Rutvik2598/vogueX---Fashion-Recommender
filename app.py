@@ -27,174 +27,288 @@ import time
 import jsonpickle
 import random
 
+# db = SQLAlchemy()
+# bootstrap = Bootstrap()
+# login_manager = LoginManager()
+
+# class User(UserMixin, db.Model):
+#     sno = db.Column(db.Integer, primary_key=True)
+#     username = db.Column(db.String(15), unique=True, nullable=False)  
+#     email = db.Column(db.String(50), unique=True, nullable=False)      
+#     password = db.Column(db.String(80), unique=True, nullable=False)   
+#     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+#     def get_id(self):
+#         return self.sno
+
+#     def __repr__(self) -> str:
+#         return f"{self.sno} - {self.username} - {self.date_created}"
+
+# class LoginForm(FlaskForm):
+#     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+#     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+#     remember = BooleanField('Remember Me')
+
+# class SignupForm(FlaskForm):
+#     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+#     email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
+#     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+#     confirm = PasswordField(validators=[validators.EqualTo('password', 'Password mismatch')])
+#     show_password = BooleanField('Show Password')
+
+# class ForgotPasswordForm(FlaskForm):
+#     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
+#     new_password = PasswordField('New Password', validators=[InputRequired(), Length(min=8, max=80)])
+#     confirm_password = PasswordField('Confirm New Password', validators=[
+#         InputRequired(), Length(min=8, max=80), validators.EqualTo('new_password', message="Passwords must match")
+#     ])
+
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
+
+# class LoginForm(FlaskForm):
+#     style ={}
+#     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+#     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+#     remember = BooleanField('Remember Me')
+    
+# class SignupForm(FlaskForm):
+#     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+#     email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
+#     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+#     confirm = wtforms.PasswordField(validators=[validators.EqualTo('password', 'Password mismatch')])
+#     show_password = BooleanField('Show Password')
+    
+# class ForgotPasswordForm(FlaskForm):
+#     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
+#     new_password = PasswordField('New Password', validators=[InputRequired(), Length(min=8, max=80)])
+#     confirm_password = PasswordField('Confirm New Password', validators=[
+#         InputRequired(), Length(min=8, max=80), validators.EqualTo('new_password', message="Passwords must match")
+#     ])
+
+# class VerifyOTPForm(FlaskForm):
+#     otp = StringField('Enter OTP', validators=[DataRequired(), Length(min=6, max=6)])
+    
+# def create_app(config_name='default'):
+#     app = Flask(__name__, static_folder='static')
+#     app.secret_key = 'smi'
+
+#     app.config['SECRET_KEY'] = 'vogueXProject'
+#     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///vogueX.db"
+#     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+#     if config_name == 'testing':
+#         app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///:memory:" 
+    
+#     db.init_app(app)
+#     bootstrap.init_app(app)
+#     login_manager.init_app(app)
+#     login_manager.login_view = 'login'
+
+#     with app.app_context():
+#         db.create_all()
+
+#     app = Flask(__name__, static_folder='static')
+#     app.secret_key = 'smi'
+#     db = SQLAlchemy()
+    
+#     app.config['SECRET_KEY'] = 'vogueXProject'
+#     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///vogueX.db"
+#     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#     db.init_app(app)
+#     bootstrap = Bootstrap(app)
+#     login_manager = LoginManager()
+#     login_manager.init_app(app)
+#     login_manager.login_view = 'login'
+    
+#     app.config.update(
+#         MAIL_SERVER='smtp.gmail.com',  
+#         MAIL_PORT=587,
+#         MAIL_USE_TLS=True,
+#         MAIL_USERNAME='voguexrecommender@gmail.com',
+#         MAIL_PASSWORD='btxe bukp vbju xxsl'
+#     )
+#     mail = Mail(app)
+    
+#     def generate_otp():
+#         return str(random.randint(100000, 999999)) 
+    
+    
+#     class User(UserMixin, db.Model):
+#         sno = db.Column(db.Integer, primary_key=True)
+#         username = db.Column(db.String(15), unique=True)
+#         email = db.Column(db.String(50), unique=True)
+#         password = db.Column(db.String(80), unique=True)
+#         date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    
+#         def get_id(self):
+#             return (self.sno)
+    
+#         def __repr__(self) -> str:
+#             return f"{self.sno} - {self.username} - {self.date_created}"
+#     with app.app_context():
+#         db.create_all()
+    
+#     @app.route('/forgot_password', methods=['GET', 'POST'])
+#     def forgot_password():
+#         form = ForgotPasswordForm()
+#         print("hello")
+#         if form.validate_on_submit():
+#             username = form.username.data
+#             new_password = form.new_password.data
+#             confirm_password = form.confirm_password.data
+    
+#             user = User.query.filter_by(username=username).first()
+            
+#             if user:
+                
+#                 if new_password == confirm_password:
+#                     # Hash the new password and update the user’s password in the database
+#                     hashed_password = generate_password_hash(new_password)
+#                     user.password = hashed_password
+#                     db.session.commit()
+#                     flash('Your password has been updated successfully!', 'success')
+#                     return redirect(url_for('login'))
+#                 else:
+#                     flash("New password and confirm password do not match.", 'danger')
+#             else:
+#                 print("No user")
+#                 flash('No user found with that username.', 'danger')
+    
+#         return render_template('forgot_password.html', form=form)
+    
+#     @app.route("/home")
+#     @login_required
+#     def home_page():
+#         if 'username' not in session:
+#             return redirect(url_for('login'))
+#         print("Redirect to home page for user")
+#         return render_template('home.html', username=session['username'])
+        
+    
+#     @app.route("/signup", methods=['GET', 'POST'])
+#     def signup():
+#         form = SignupForm()
+#         form1 = VerifyOTPForm()
+#         if form.validate_on_submit():
+#             hashed_password = generate_password_hash(form.password.data)
+#             otp = random.randint(100000, 999999)  
+    
+            
+#             session['temp_user_data'] = {
+#                 'username': form.username.data,
+#                 'email': form.email.data,
+#                 'password': hashed_password,
+#                 'otp': otp
+#             }
+    
+            
+#             msg = Message('Verify Your Email - OTP', sender='your-email@example.com', recipients=[form.email.data])
+#             msg.body = f'Your OTP for email verification is: {otp}'
+#             mail.send(msg)
+    
+#             flash("OTP has been sent to your email. Please verify to complete registration.", "info")
+#             return render_template('verify_otp.html', form= form1)  
+    
+#         return render_template('signup.html', form=form)
+# Initialize extensions
 db = SQLAlchemy()
 bootstrap = Bootstrap()
 login_manager = LoginManager()
+mail = Mail()
 
+# User model
 class User(UserMixin, db.Model):
     sno = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(15), unique=True, nullable=False)  
-    email = db.Column(db.String(50), unique=True, nullable=False)      
-    password = db.Column(db.String(80), unique=True, nullable=False)   
+    username = db.Column(db.String(15), unique=True, nullable=False)
+    email = db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=True, nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def get_id(self):
-        return self.sno
+        return str(self.sno)
 
-    def __repr__(self) -> str:
-        return f"{self.sno} - {self.username} - {self.date_created}"
-
+# Flask-WTF forms
 class LoginForm(FlaskForm):
-    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
     remember = BooleanField('Remember Me')
 
 class SignupForm(FlaskForm):
-    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
-    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-    confirm = PasswordField(validators=[validators.EqualTo('password', 'Password mismatch')])
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
+    email = StringField('Email', validators=[InputRequired(), Email(), Length(max=50)])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
+    confirm = PasswordField('Confirm Password', validators=[validators.EqualTo('password', 'Password mismatch')])
     show_password = BooleanField('Show Password')
 
 class ForgotPasswordForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
     new_password = PasswordField('New Password', validators=[InputRequired(), Length(min=8, max=80)])
-    confirm_password = PasswordField('Confirm New Password', validators=[
-        InputRequired(), Length(min=8, max=80), validators.EqualTo('new_password', message="Passwords must match")
-    ])
+    confirm_password = PasswordField('Confirm New Password', validators=[validators.EqualTo('new_password', 'Passwords must match')])
+
+class VerifyOTPForm(FlaskForm):
+    otp = StringField('Enter OTP', validators=[DataRequired(), Length(min=6, max=6)])
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class LoginForm(FlaskForm):
-    style ={}
-    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-    remember = BooleanField('Remember Me')
-    
-class SignupForm(FlaskForm):
-    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
-    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-    confirm = wtforms.PasswordField(validators=[validators.EqualTo('password', 'Password mismatch')])
-    show_password = BooleanField('Show Password')
-    
-class ForgotPasswordForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
-    new_password = PasswordField('New Password', validators=[InputRequired(), Length(min=8, max=80)])
-    confirm_password = PasswordField('Confirm New Password', validators=[
-        InputRequired(), Length(min=8, max=80), validators.EqualTo('new_password', message="Passwords must match")
-    ])
-
-class VerifyOTPForm(FlaskForm):
-    otp = StringField('Enter OTP', validators=[DataRequired(), Length(min=6, max=6)])
-    
 def create_app(config_name='default'):
     app = Flask(__name__, static_folder='static')
-    app.secret_key = 'smi'
-
-    app.config['SECRET_KEY'] = 'vogueXProject'
+    app.secret_key = 'smi'  # Replace this with environment variable in production
+    
+    # Database configuration
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///vogueX.db"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
     if config_name == 'testing':
         app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///:memory:" 
     
+    # Mail configuration
+    app.config.update(
+        MAIL_SERVER='smtp.gmail.com',
+        MAIL_PORT=587,
+        MAIL_USE_TLS=True,
+        MAIL_USERNAME='voguexrecommender@gmail.com',  # Use environment variable in production
+        MAIL_PASSWORD='btxe bukp vbju xxsl'  # Use environment variable in production
+    )
+    
+    # Initialize extensions
     db.init_app(app)
     bootstrap.init_app(app)
     login_manager.init_app(app)
-    login_manager.login_view = 'login'
-
+    mail.init_app(app)
+    
     with app.app_context():
         db.create_all()
 
-    app = Flask(__name__, static_folder='static')
-    app.secret_key = 'smi'
-    db = SQLAlchemy()
-    
-    app.config['SECRET_KEY'] = 'vogueXProject'
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///vogueX.db"
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.init_app(app)
-    bootstrap = Bootstrap(app)
-    login_manager = LoginManager()
-    login_manager.init_app(app)
-    login_manager.login_view = 'login'
-    
-    app.config.update(
-        MAIL_SERVER='smtp.gmail.com',  
-        MAIL_PORT=587,
-        MAIL_USE_TLS=True,
-        MAIL_USERNAME='voguexrecommender@gmail.com',
-        MAIL_PASSWORD='btxe bukp vbju xxsl'
-    )
-    mail = Mail(app)
-    
-    def generate_otp():
-        return str(random.randint(100000, 999999)) 
-    
-    
-    class User(UserMixin, db.Model):
-        sno = db.Column(db.Integer, primary_key=True)
-        username = db.Column(db.String(15), unique=True)
-        email = db.Column(db.String(50), unique=True)
-        password = db.Column(db.String(80), unique=True)
-        date_created = db.Column(db.DateTime, default=datetime.utcnow)
-    
-        def get_id(self):
-            return (self.sno)
-    
-        def __repr__(self) -> str:
-            return f"{self.sno} - {self.username} - {self.date_created}"
-    with app.app_context():
-        db.create_all()
-    
+    # Define your routes here
     @app.route('/forgot_password', methods=['GET', 'POST'])
     def forgot_password():
         form = ForgotPasswordForm()
-        print("hello")
         if form.validate_on_submit():
             username = form.username.data
             new_password = form.new_password.data
             confirm_password = form.confirm_password.data
-    
             user = User.query.filter_by(username=username).first()
             
-            if user:
-                
-                if new_password == confirm_password:
-                    # Hash the new password and update the user’s password in the database
-                    hashed_password = generate_password_hash(new_password)
-                    user.password = hashed_password
-                    db.session.commit()
-                    flash('Your password has been updated successfully!', 'success')
-                    return redirect(url_for('login'))
-                else:
-                    flash("New password and confirm password do not match.", 'danger')
+            if user and new_password == confirm_password:
+                user.password = generate_password_hash(new_password)
+                db.session.commit()
+                flash('Password updated successfully!', 'success')
+                return redirect(url_for('login'))
             else:
-                print("No user")
-                flash('No user found with that username.', 'danger')
+                flash('No user found or passwords do not match.', 'danger')
     
         return render_template('forgot_password.html', form=form)
-    
-    @app.route("/home")
-    @login_required
-    def home_page():
-        if 'username' not in session:
-            return redirect(url_for('login'))
-        print("Redirect to home page for user")
-        return render_template('home.html', username=session['username'])
-        
-    
+
     @app.route("/signup", methods=['GET', 'POST'])
     def signup():
         form = SignupForm()
         form1 = VerifyOTPForm()
         if form.validate_on_submit():
             hashed_password = generate_password_hash(form.password.data)
-            otp = random.randint(100000, 999999)  
-    
+            otp = str(random.randint(100000, 999999))
             
             session['temp_user_data'] = {
                 'username': form.username.data,
@@ -203,13 +317,12 @@ def create_app(config_name='default'):
                 'otp': otp
             }
     
-            
             msg = Message('Verify Your Email - OTP', sender='your-email@example.com', recipients=[form.email.data])
             msg.body = f'Your OTP for email verification is: {otp}'
             mail.send(msg)
     
-            flash("OTP has been sent to your email. Please verify to complete registration.", "info")
-            return render_template('verify_otp.html', form= form1)  
+            flash("OTP sent to your email. Verify to complete registration.", "info")
+            return render_template('verify_otp.html', form=form1)
     
         return render_template('signup.html', form=form)
     
