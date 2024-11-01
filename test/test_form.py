@@ -1,8 +1,8 @@
 import pytest
 from flask import Flask
 from werkzeug.security import generate_password_hash
-from ..app import create_app, db
-from ..app.models import User  
+from app import create_app, db  # Adjusted import
+from app.models import User  # Adjusted import
 
 @pytest.fixture
 def app():
