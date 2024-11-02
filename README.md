@@ -21,6 +21,9 @@ Imagine a fashion assistant that understands your style, suits every occasion, a
 ### Scan to watch the demo!
 <img src="https://github.com/systems-org/vogueX---Fashion-Recommender/blob/feature/qrcode-video_demo.png" width="200" height="200">
 
+### Animation Demo
+<img src="https://github.com/systems-org/vogueX---Fashion-Recommender/blob/feature/qrcode-animation.jpg" width="200" height="200">
+
 ## 🚀 Installation Procedure
 
 ## 1. Prerequisites 
