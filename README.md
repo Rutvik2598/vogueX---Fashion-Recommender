@@ -4,6 +4,8 @@
 [![Code Quality](https://github.com/systems-org/vogueX---Fashion-Recommender/actions/workflows/code_quality.yml/badge.svg)](https://github.com/systems-org/vogueX---Fashion-Recommender/actions)
 [![Black Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![DOI](https://zenodo.org/badge/865728024.svg)](https://doi.org/10.5281/zenodo.14027212)
+![Flake8](https://github.com/systems-org/vogueX---Fashion-Recommender/workflows/Python%20Linting/badge.svg)
+
 
 [![Build Status](https://circleci.com/gh/mukunda-p/vogueX---Fashion-Recommender/tree/dev.svg?style=svg)](https://circleci.com/gh/mukunda-p/vogueX---Fashion-Recommender/tree/dev)
 
