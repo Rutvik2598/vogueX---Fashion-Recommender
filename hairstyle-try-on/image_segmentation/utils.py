@@ -1,19 +1,29 @@
-import torch
-import torchvision
 import os
 import sys
-sys.path.append(os.path.join(os.getcwd(), 'image_segmentation'))
+
+import torch
+import torchvision
+
+sys.path.append(os.path.join(os.getcwd(), "image_segmentation"))
+import numpy as np
+import yaml
 from dataset import celebamask_Dataset
 from torch.utils.data import DataLoader
-import numpy as np
-import matplotlib.pyplot as plt
-import yaml
 
-with open(os.path.join("image_segmentation", "label.yml"), 'r') as f:
+with open(os.path.join("image_segmentation", "label.yml"), "r") as f:
     label = yaml.safe_load(f)
-    label['color'] = [np.array(c) for c in label['color']]    
+    label["color"] = [np.array(c) for c in label["color"]]
 
-def get_loaders(train_dir, train_maskdir, batch_size, train_transform, num_workers, pin_memory=True, train_test_split=0.9):
+
+def get_loaders(
+    train_dir,
+    train_maskdir,
+    batch_size,
+    train_transform,
+    num_workers,
+    pin_memory=True,
+    train_test_split=0.9,
+):
     ds = celebamask_Dataset(
         image_dir=train_dir,
         mask_dir=train_maskdir,
@@ -41,13 +51,16 @@ def get_loaders(train_dir, train_maskdir, batch_size, train_transform, num_worke
 
     return train_loader, val_loader
 
+
 def save_checkpoint(state, filename="my_checkpoint.pth.tar"):
     print("=> Saving checkpoint")
     torch.save(state, filename)
 
+
 def load_checkpoint(checkpoint, model):
     print("=> Loading checkpoint")
     model.load_state_dict(checkpoint["state_dict"])
+
 
 def check_accuracy(loader, model, device="cuda"):
     num_correct = 0
@@ -58,35 +71,35 @@ def check_accuracy(loader, model, device="cuda"):
         for x, y in loader:
             x = x.to(device)
             y = y.to(device)
-            preds = model(x) 
+            preds = model(x)
             preds = torch.nn.functional.softmax(preds, dim=1)
-            preds = torch.argmax(preds, dim=1).float() # (preds > 0.5).float()
+            preds = torch.argmax(preds, dim=1).float()  # (preds > 0.5).float()
 
             num_correct += (preds == y).sum()
             num_pixels += torch.numel(preds)
 
-    print(
-        f"Got {num_correct}/{num_pixels} with acc {num_correct/num_pixels*100:.2f}"
-    )
+    print(f"Got {num_correct}/{num_pixels} with acc {num_correct/num_pixels*100:.2f}")
     model.train()
-    return num_correct/num_pixels
+    return num_correct / num_pixels
+
 
 def fill_color(mask3darray, label):
-    for idx, label_number in enumerate(label['label']):
-        t = np.where(mask3darray[:, :, 0]==label_number, True, False)
+    for idx, label_number in enumerate(label["label"]):
+        t = np.where(mask3darray[:, :, 0] == label_number, True, False)
         # red channal
-        mask3darray[:, :, 0][t] = label['color'][idx][0]
+        mask3darray[:, :, 0][t] = label["color"][idx][0]
         # green channal
-        mask3darray[:, :, 1][t] = label['color'][idx][1]
+        mask3darray[:, :, 1][t] = label["color"][idx][1]
         # blue channal
-        mask3darray[:, :, 2][t] = label['color'][idx][2]
+        mask3darray[:, :, 2][t] = label["color"][idx][2]
 
     return mask3darray
 
+
 def label_to_image(preds, label):
     masks = []
-    for idx in range(preds.shape[0]): # batch size = preds.shape[0]
-        mask = np.asarray([preds[idx].cpu().numpy()]*3)
+    for idx in range(preds.shape[0]):  # batch size = preds.shape[0]
+        mask = np.asarray([preds[idx].cpu().numpy()] * 3)
         mask = mask.transpose(1, 2, 0)
 
         mask = fill_color(mask, label)
@@ -95,32 +108,38 @@ def label_to_image(preds, label):
         masks.append(mask)
     return torch.from_numpy(np.array(masks))
 
-def save_predictions_as_imgs(loader, model, folder="saved_images", epoch_name='', device="cuda"):
+
+def save_predictions_as_imgs(
+    loader, model, folder="saved_images", epoch_name="", device="cuda"
+):
     model.eval()
     for idx, (x, y) in enumerate(loader):
         x = x.to(device=device)
         with torch.no_grad():
             preds = model(x)
             preds = torch.nn.functional.softmax(preds, dim=1)
-            preds = torch.argmax(preds, dim=1).float() # (preds > 0.5).float()
+            preds = torch.argmax(preds, dim=1).float()  # (preds > 0.5).float()
         preds = label_to_image(preds, label)
-        preds = preds.permute(0, 3, 1, 2).to('cpu')
+        preds = preds.permute(0, 3, 1, 2).to("cpu")
         # print(preds.shape)
 
-        directory = os.path.join(folder, epoch_name) # f"{folder}/{epoch}/pred_{idx}.png"
+        directory = os.path.join(
+            folder, epoch_name
+        )  # f"{folder}/{epoch}/pred_{idx}.png"
         if not os.path.exists(directory):
             os.makedirs(directory)
 
         torchvision.utils.save_image(
-            preds[0], os.path.join(directory, 'pred_'+str(idx)+'.png')
+            preds[0], os.path.join(directory, "pred_" + str(idx) + ".png")
         )
         # torchvision.utils.save_image(y.unsqueeze(1), f"{folder}{idx}.png")
 
     model.train()
 
-if __name__ == '__main__':
-    preds = [[1,2,1], [0,0,1], [1,2,2]]
-    with open('test_numpy_image.npy', 'rb') as f:
+
+if __name__ == "__main__":
+    preds = [[1, 2, 1], [0, 0, 1], [1, 2, 2]]
+    with open("test_numpy_image.npy", "rb") as f:
         preds = np.load(f)
     print(preds.max())
 
