@@ -17,7 +17,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/systems-org/vogueX---Fashion-Recommender)
 
 
-[![GitHub issues](https://img.shields.io/github/issuessystems-org/vogueX---Fashion-Recommender)](https://github.com/systems-org/vogueX---Fashion-Recommender/issues?q=is%3Aopen)
+[![GitHub issues](https://img.shields.io/github/issuessystems-org/vogueX---Fashion-Recommender)](https://github.com/systems-org/vogueX---Fashion-Recommender/issues)
 [![Github pull requests](https://img.shields.io/github/issues-pr/systems-org/vogueX---Fashion-Recommender)](https://github.com/systems-org/vogueX---Fashion-Recommender/pulls)
 
 
