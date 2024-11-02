@@ -7,17 +7,14 @@
 ![Flake8](https://github.com/systems-org/vogueX---Fashion-Recommender/workflows/Python%20Linting/badge.svg)
 
 
-[![Build Status](https://circleci.com/gh/mukunda-p/vogueX---Fashion-Recommender/tree/dev.svg?style=svg)](https://circleci.com/gh/mukunda-p/vogueX---Fashion-Recommender/tree/dev)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![MIT](https://img.shields.io/badge/license-MIT-blue)
 
 [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/README.md)
 
 <a href =https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/LICENCE.md><img src=https://img.shields.io/github/license/mukunda-p/vogueX---Fashion-Recommender></a>
 
-[![Github Repo size in bytes](https://img.shields.io/github/languages/code-size/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender)
-
-[![codecov](https://codecov.io/gh/mukunda-p/vogueX---Fashion-Recommender/branch/dev/graph/badge.svg?token=O08MSPU0WT)](https://codecov.io/gh/mukunda-p/vogueX---Fashion-Recommender)
-
-[![DOI](https://zenodo.org/badge/568223471.svg)](https://zenodo.org/badge/latestdoi/568223471)
+[![Github Repo size in bytes](https://img.shields.io/github/languages/code-size/systems-org/vogueX---Fashion-Recommender)](https://github.com/systems-org/vogueX---Fashion-Recommender)
 
 
 [![GitHub issues](https://img.shields.io/github/issues/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues?q=is%3Aopen)
@@ -25,8 +22,6 @@
 [![Github pull requests](https://img.shields.io/github/issues-pr/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/pulls)
 [![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/pulls?q=is%3Apr+is%3Aclosed)
 
-[![github workflow](https://github.com/mukunda-p/vogueX---Fashion-Recommender/actions/workflows/style_checker.yml/badge.svg)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/actions/workflows/style_checker.yml)
-[![github workflow](https://github.com/mukunda-p/vogueX---Fashion-Recommender/actions/workflows/main.yml/badge.svg)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/actions/workflows/main.yml)
 
 ## 🚀 Step Up Your Style Game with VogueX! 🚀
 Imagine a fashion assistant that understands your style, suits every occasion, and even checks the weather to make sure you’re perfectly dressed! VogueX turns this dream into reality, placing a personalized wardrobe right at your fingertips. From bright, sunny days to surprise rain showers, VogueX has you covered with outfit recommendations that keep you looking effortlessly stylish. Now, with **AI-Powered Virtual Try-On**, you can see each outfit on *you* before making a decision. Say goodbye to the guesswork and hello to a fully tailored fashion experience that brings your unique style to life. 🌟
