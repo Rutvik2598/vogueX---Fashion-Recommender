@@ -14,7 +14,7 @@
 
 <a href =https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/LICENCE.md><img src=https://img.shields.io/github/license/mukunda-p/vogueX---Fashion-Recommender></a>
 
-[![Github Repo size in bytes](https://img.shields.io/github/languages/code-size/systems-org/vogueX---Fashion-Recommender)](https://github.com/systems-org/vogueX---Fashion-Recommender)
+[![Github Repo size in bytes](https://img.shields.io/github/languages/code-size/[systems-org/vogueX---Fashion-Recommender](https://github.com/systems-org/vogueX---Fashion-Recommender/tree/feature))]([https://github.com/systems-org/vogueX---Fashion-Recommender](https://github.com/systems-org/vogueX---Fashion-Recommender/tree/feature))
 
 
 [![GitHub issues](https://img.shields.io/github/issues/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues?q=is%3Aopen)
