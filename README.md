@@ -17,10 +17,8 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/systems-org/vogueX---Fashion-Recommender)
 
 
-[![GitHub issues](https://img.shields.io/github/issues/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues?q=is%3Aopen)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues?q=is%3Aissue+is%3Aclosed)
-[![Github pull requests](https://img.shields.io/github/issues-pr/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/pulls)
-[![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/pulls?q=is%3Apr+is%3Aclosed)
+[![GitHub issues](https://img.shields.io/github/issuessystems-org/vogueX---Fashion-Recommender)](https://github.com/systems-org/vogueX---Fashion-Recommender/issues?q=is%3Aopen)
+[![Github pull requests](https://img.shields.io/github/issues-pr/systems-org/vogueX---Fashion-Recommender)](https://github.com/systems-org/vogueX---Fashion-Recommender/pulls)
 
 
 ## 🚀 Step Up Your Style Game with VogueX! 🚀
