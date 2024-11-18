@@ -1,46 +1,75 @@
 
-## vogueX Fashion Recommender and Virtual Try On: Outfit Recommendation and Try On System
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) <br><br>
-<a href =[https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/LICENCE.md](https://github.com/systems-org/vogueX---Fashion-Recommender/blob/feature/LICENSE.md)><img src=https://img.shields.io/github/license/systems-org/vogueX---Fashion-Recommender></a>
-[![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://github.com/systems-org/vogueX---Fashion-Recommender/blob/feature/README.md) <br><br>
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/systems-org/vogueX---Fashion-Recommender)
-[![Github pull requests](https://img.shields.io/github/issues-pr/systems-org/vogueX---Fashion-Recommender)](https://github.com/systems-org/vogueX---Fashion-Recommender/pulls) <br><br>
-[![Flask App CI](https://github.com/systems-org/vogueX---Fashion-Recommender/actions/workflows/test-login.yml/badge.svg)](https://github.com/systems-org/vogueX---Fashion-Recommender/actions/workflows/test-login.yml)
-[![Code Quality](https://github.com/systems-org/vogueX---Fashion-Recommender/actions/workflows/code_quality.yml/badge.svg)](https://github.com/systems-org/vogueX---Fashion-Recommender/actions)
+## vogueX Fashion Recommender: Outfit Recommendation System
+[![Code Quality](https://github.com/systems-org/vogueX---Fashion-Recommender/actions/workflows/code-quality.yml/badge.svg)](https://github.com/systems-org/vogueX---Fashion-Recommender/actions)
 [![Black Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![DOI](https://zenodo.org/badge/865728024.svg)](https://doi.org/10.5281/zenodo.14027212)
-![Flake8](https://github.com/systems-org/vogueX---Fashion-Recommender/workflows/Python%20Linting/badge.svg)
 
-## 🚀 Step Up Your Style Game with VogueX! 🚀
-Imagine a fashion assistant that understands your style, suits every occasion, and even checks the weather to make sure you’re perfectly dressed! VogueX turns this dream into reality, placing a personalized wardrobe right at your fingertips. From bright, sunny days to surprise rain showers, VogueX has you covered with outfit recommendations that keep you looking effortlessly stylish. Now, with **AI-Powered Virtual Try-On**, you can see each outfit on *you* before making a decision. Say goodbye to the guesswork and hello to a fully tailored fashion experience that brings your unique style to life. 🌟
+[![Build Status](https://circleci.com/gh/mukunda-p/vogueX---Fashion-Recommender/tree/dev.svg?style=svg)](https://circleci.com/gh/mukunda-p/vogueX---Fashion-Recommender/tree/dev)
+
+[![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/README.md)
+
+<a href =https://github.com/mukunda-p/vogueX---Fashion-Recommender/blob/dev/LICENCE.md><img src=https://img.shields.io/github/license/mukunda-p/vogueX---Fashion-Recommender></a>
+
+[![Github Repo size in bytes](https://img.shields.io/github/languages/code-size/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender)
+
+[![codecov](https://codecov.io/gh/mukunda-p/vogueX---Fashion-Recommender/branch/dev/graph/badge.svg?token=O08MSPU0WT)](https://codecov.io/gh/mukunda-p/vogueX---Fashion-Recommender)
+
+[![DOI](https://zenodo.org/badge/568223471.svg)](https://zenodo.org/badge/latestdoi/568223471)
+
+
+[![GitHub issues](https://img.shields.io/github/issues/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues?q=is%3Aopen)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/issues?q=is%3Aissue+is%3Aclosed)
+[![Github pull requests](https://img.shields.io/github/issues-pr/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/pulls)
+[![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/mukunda-p/vogueX---Fashion-Recommender)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/pulls?q=is%3Apr+is%3Aclosed)
+
+[![github workflow](https://github.com/mukunda-p/vogueX---Fashion-Recommender/actions/workflows/style_checker.yml/badge.svg)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/actions/workflows/style_checker.yml)
+[![github workflow](https://github.com/mukunda-p/vogueX---Fashion-Recommender/actions/workflows/main.yml/badge.svg)](https://github.com/mukunda-p/vogueX---Fashion-Recommender/actions/workflows/main.yml)
+
+## 💎Description</br>
+Has it ever happened that you were all set with the perfect dress for your big day but you forgot to take a rain check? 
+
+Well, don’t worry. Our fashion recommender is here to save your day. This ain’t any regular fashion recommender but a recommender that will look out for you not only in terms of style but in terms of comfort. Now you may think how would one do that? We do this by providing you choices based on:
+
+- Weather of the day, to let you know if you should avoid certain apparel or carry some extra accessories
+- Season to illustrate different patterns
+- Occasion to keep you in check with the highest rated choices 
+
+There is feature of favourites where you can add your favourite attires to the favourites collection and can remove attires from the favourites.
+We suggest Shopping links from e-commerce websites for the selected attires by distinguishing prices.
+
+And if this doesn’t seem enough, one can extend this in a thousand different ways, some of which are:
+
+Integrating the health app with it to take an extra step and use the predicted menstrual cycle to enhance the outfit recommendation as to make it more comfortable.
+Introducing a feedback mechanism to keep track of the user’s preferences in order to give better suggestions
+Integrating the calendar app to take care of the important days and send a recommendation accordingly.
+
+We have “A style for every story” so let it be known to the world :)
+
 ## Demo
 
-### Scan to watch the demo!
-<img src="https://github.com/systems-org/vogueX---Fashion-Recommender/blob/feature/qrcode-video_demo.png" width="200" height="200">
+[Click here to watch our demo!](https://drive.google.com/file/d/1q5wm0qu7Mw8gSYmC17TGPrOo3cX7KVop/view?usp=sharing) <br>
 
-### Animation Demo
-<img src="https://github.com/systems-org/vogueX---Fashion-Recommender/blob/feature/qrcode-animation.jpg" width="200" height="200">
 
 ## 🚀 Installation Procedure
 
 ## 1. Prerequisites 
 
 Guides on how to install:
-  * [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  * Install python virtual environment if needed, if you do not want to hurt the python libraries on your system. 
-  `sudo apt-get install python3-virtualenv`
-  Create virtualenv:
-  `virtualenv venv` 
+* [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* Install python virtual environment if needed, if you do not want to hurt the python libraries on your system. 
+for Linux:
+
+`sudo apt-get install python3-virtualenv`
+
+create virtualenv:
+
+`virtualenv venv` 
 
 ## 2. Deploying
 
 First, clone the repository:
 
 
-$ git clone https://github.com/systems-org/vogueX---Fashion-Recommender.git
+$ git clone git@github.com:mukunda-p/vogueX---Fashion-Recommender.git
 
 
 Change working directory to the repository:
@@ -49,20 +78,27 @@ Change working directory to the repository:
 $ cd vogueX---Fashion-Recommender
 
 
-We have made a flask application for virtual try on and fashion recommendation. Run the following code
-$ python app.py
+We have made a python script to run the application.
+Just run 
+
+$ python3 main.py
 
 
 ### 3. Follow the provided address and enjoy!
 
 
+http://localhost:5000/
+
+
 ## Contributors:
-- Jayneel Shah (jshah26)
-- Smiti Kothari (skothar3)
-- Vedant Patel (vpatel32)
+- Kalyan Karnati (kkarnat)
+- Mukund Varma Pericherla (mperich)
+- Pranavi Sharma Sanganabhatla (psangan)
+- Saketh Vangala (svangal)
+- Srihitha Reddy Kaalam (skaalam)
+
 
 
 ## License
-[MIT License](https://github.com/systems-org/vogueX---Fashion-Recommender/blob/feature/LICENSE.md)
-
+[MIT License](https://github.com/pncnmnp/SE21-project/blob/Developer/LICENSE.md)
 
