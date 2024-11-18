@@ -29,9 +29,9 @@ Has it ever happened that you were all set with the perfect dress for your big d
 
 Well, don’t worry. Our fashion recommender is here to save your day. This ain’t any regular fashion recommender but a recommender that will look out for you not only in terms of style but in terms of comfort. Now you may think how would one do that? We do this by providing you choices based on:
 
-  - Weather of the day, to let you know if you should avoid certain apparel or carry some extra accessories
-  - Season to illustrate different patterns
-  - Occasion to keep you in check with the highest rated choices 
+- Weather of the day, to let you know if you should avoid certain apparel or carry some extra accessories
+- Season to illustrate different patterns
+- Occasion to keep you in check with the highest rated choices 
 
 There is feature of favourites where you can add your favourite attires to the favourites collection and can remove attires from the favourites.
 We suggest Shopping links from e-commerce websites for the selected attires by distinguishing prices.
@@ -54,15 +54,15 @@ We have “A style for every story” so let it be known to the world :)
 ## 1. Prerequisites 
 
 Guides on how to install:
-  * [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  * Install python virtual environment if needed, if you do not want to hurt the python libraries on your system. 
-  for Linux:
-  
-  `sudo apt-get install python3-virtualenv`
-  
-  create virtualenv:
-  
-  `virtualenv venv` 
+* [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* Install python virtual environment if needed, if you do not want to hurt the python libraries on your system. 
+for Linux:
+
+`sudo apt-get install python3-virtualenv`
+
+create virtualenv:
+
+`virtualenv venv` 
 
 ## 2. Deploying
 
@@ -101,5 +101,4 @@ http://localhost:5000/
 
 ## License
 [MIT License](https://github.com/pncnmnp/SE21-project/blob/Developer/LICENSE.md)
-
 

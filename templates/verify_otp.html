@@ -1,0 +1,30 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+{% import "bootstrap/wtf.html" as wtf %}
+<body>
+  <div class="wrapper">
+    <h2>Verify OTP</h2>
+    <form method="POST" action="/verify_otp" class="text-uppercase">
+        {{ form.hidden_tag() }}
+        <label for="otp" class="custom-label">{{ form.otp.label.text }}</label>
+        {{ form.otp(class_="form-control input-field") }}
+        
+        <button type="submit">Verify OTP</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="alert alert-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
